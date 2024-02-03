@@ -21,6 +21,7 @@
     border-bottom: rgb(122, 122, 122) 6px solid;
     overflow: hidden;
     box-sizing: border-box;
+    box-shadow: 0px 0px 30px #000;
 
     /* background-image: linear-gradient(var(--backgroundblacklighter) .1em, transparent .1em), linear-gradient(90deg, var(--backgroundblacklighter) .1em, transparent .1em);
     background-size: 1.6em 1.6em;

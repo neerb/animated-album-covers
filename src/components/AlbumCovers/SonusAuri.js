@@ -13,7 +13,8 @@ import { animate, motion } from 'framer-motion';
 // const titleText = "SONUS AURI";
 
 const audioLink = "https://audio.jukehost.co.uk/IUZyy60KTs4EpTG2DoJNTcIK7NC8gwib";
-const background = "repeating-linear-gradient(45deg,var(--backgroundbiege),var(--backgroundbiege) 50px,var(--backgroundbrown) 50px,var(--backgroundbrown) 100px)";
+// const background = "repeating-linear-gradient(45deg,var(--backgroundbiege),var(--backgroundbiege) 50px,var(--backgroundbrown) 50px,var(--backgroundbrown) 100px)";
+const background = "linear-gradient(45deg, #5e3333, #49432b";
 
 
 class SonusAuri extends React.Component {
