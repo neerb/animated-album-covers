@@ -1,6 +1,6 @@
 :root {
-    --sc1: rgb(0, 0, 91);
-    --sc2: rgb(95, 105, 184);
+    --sc1: #00005b;
+    --sc2: #5f69b8;
     --sc3: #8546c0;
     --sc4: #de6fdc;
 }
@@ -17,7 +17,7 @@
     position: relative;
     width: 85vh;
     height: 85vh;
-    margin: 0px auto 0 auto;
+    margin: 0px;
     /* margin: auto auto; */
 
     /* background-color: var(--backgroundblack); */

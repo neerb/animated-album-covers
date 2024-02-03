@@ -1,27 +1,30 @@
 .full-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding-top: 30px;
+    margin: auto 0;
+    /* padding: 20px 0px; */
     overflow: hidden;
     z-index: 4;
+
+    box-sizing: border-box;
     /* gap: 10px; */
 }
 
 .info-about-album-wrap {
     font-family: monospace;
-    width: 15%;
-    height: 15%;
+    /* width: 15%; */
+    /* height: 15%; */
+    height: auto;
+    margin: 0 0 auto 0;
     /* max-height: 20%; */
     /* margin: auto 0 auto 0; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
-
-    box-shadow: 0px 0px 16px #000;
 }
 
 .info-about-album {
@@ -31,8 +34,9 @@
     justify-content: center;
     gap: 10px;
     width: auto;
-    height: 100%;
-    padding: 10px;
+    /* height: 100%; */
+    box-shadow: 0px 0px 24px #000;
+    padding: 10px 16px;
 }
 
 .info-about-album-wrap p {
@@ -50,10 +54,12 @@
 
 .page-wrapper {
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* width: 60%; */
-    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    /* justify-content: space-evenly; */
+    width: 100%;
+    /* height: 100%; */
+    /* gap: 5px; */
 }
 
 .play-button {
@@ -78,18 +84,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin: auto auto;
+    margin: 0 auto;
     z-index: 6;
     gap: 10px;
 }
 
 .press-play {
     position: absolute;
-    top:25%;
+    /* top:25%; */
     left: 0;
     z-index: 5;
     width: 100%;
-    height: 50%;
+    height: 100%;
     text-align: center;
     font-family: monospace;
     color: #eeff00;
@@ -102,8 +108,9 @@
 }
 
 .press-play p {
-    padding: 10px 0;
+    padding: 10px;
     margin:  0;
+    margin: auto;
 
     text-shadow: 0 0 12px #eeff00, 2px 2px 16px hsla(0,0%,100%,.5);
     background: #000000a1;
@@ -118,7 +125,7 @@ input[type="range"] {
      appearance: none;
      background: transparent;
      cursor: pointer;
-     width: 15rem;
+     /* width: 15rem; */
  }
  
  /* Removes default focus */
@@ -175,5 +182,23 @@ input[type="range"] {
     }
     to {
         opacity: 100%;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    .full-wrapper {
+        flex-wrap: wrap-reverse;
+        padding-top: 0;
+    }
+
+    .info-about-album {
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .info-about-album-wrap {
+        width: 100%;
+        padding: 0;
     }
 }

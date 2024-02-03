@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState, useEffect, useRef } from 'react';
 import "./lynx.css"
 import "./common.css"
 import MusicBumperLynx from "../MusicBumper/MusicBumperLynx";
@@ -6,35 +6,18 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import { MdReplayCircleFilled } from "react-icons/md";
 import { animate, motion } from 'framer-motion';
-
-
-// const audioLink = 'https://audio.jukehost.co.uk/SVfuKTIQfieaWcE8tkWJ9fV2A59N0xrf';
-// const audioLink = 'https://audio.jukehost.co.uk/4EwUyGZZgDpi5VpoamnNsP7UcjuahCp6';
-// const audioLink = 'https://audio.jukehost.co.uk/TSwcmY1V3H6wLYCOzNHrgIfGMXkTXk5m';
-
+import { useNavigate } from "react-router-dom";
 
 // Actual Lynx Song
 const audioLink = 'https://audio.jukehost.co.uk/nyd2sERYdUrTl9KJnuoPS3gz2Idfqyo4';
 const background = "linear-gradient(135deg, rgb(156, 114, 37), rgb(46, 46, 46))";
+const swipeConfidenceThreshold = 10000;
 
 
-class Lynx extends React.Component {
-    constructor(props) {
-        super(props);
+const Lynx = (props) => {
+    const navigate = useNavigate();
 
-        this.state = {
-            context: null,
-            isPlaying: false,
-            barsBack: []
-        };
-
-        this.pausePlay = this.pausePlay.bind(this);
-        this.replay = this.replay.bind(this);
-        this.setContext = this.setContext.bind(this);
-        this.passBarsBack = this.passBarsBack.bind(this);
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             const container = document.querySelector('.lynx-wrapper');
             const layers = document.querySelectorAll('.space-triangle');
@@ -99,143 +82,90 @@ class Lynx extends React.Component {
             updateParallax();
             updateParallax2();
         }
-    }
+    }, []);
 
-    setContext(c) {
-        this.setState({
-            context: c
-        });
-    }
 
-    pausePlay() {
-        let audioSource = document.getElementById("drbumper");
+    const setContext = (c) => {
+        props.setContextFunc(c);
+    };
 
-        if (audioSource) {
-            if (this.state.context.state === 'running') {
-                this.state.context.suspend();
-                audioSource.pause();
+    const swipePower = (offset, velocity) => {
+        return Math.abs(offset) * velocity;
+    };
 
-                this.setState({
-                    isPlaying: false
-                })
-            }
-            else if (this.state.context.state === 'suspended') {
-                this.state.context.resume();
-                audioSource.play();
-
-                this.setState({
-                    isPlaying: true
-                })
-            }
+    const paginate = (newDirection) => {
+        if (newDirection >= 1) {
+            navigate("/solo");
+        } else {
+            navigate("/sonusauri");
         }
-    }
+    };
 
-    replay() {
-        let audioSource = document.getElementById("drbumper");
-
-        if (audioSource) {
-            audioSource.currentTime = 0;
-        }
-    }
-
-    passBarsBack(bars) {
-        this.setState({
-            barsBack: bars
-        });
-    }
-
-    setVolume(e) {
-        let audioSource = document.getElementById("drbumper");
-
-        if (audioSource) {
-            console.log(e.target.value);
-            audioSource.volume = e.target.value / 100.0;
-        }
-    }
-
-    render() {
-        return (
+    return (
+        <motion.div
+            className="full-wrapper"
+            style={{ backgroundImage: background }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+        >
             <motion.div
-                className="full-wrapper"
-                style={{ backgroundImage: background }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                className="page-wrapper"
+                initial={{ y: "-100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "100%" }}
+                transition={{ type: "spring", duration: 0.8 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(e, { offset, velocity }) => {
+                    const swipe = swipePower(offset.x, velocity.x);
+
+                    if (swipe < -swipeConfidenceThreshold) {
+                        paginate(1);
+                    } else if (swipe > swipeConfidenceThreshold) {
+                        paginate(-1);
+                    }
+                }}
             >
-                {
-                    !this.state.isPlaying ?
-                        <div className="press-play">
-                            <p>
-                                - press play below -
-                            </p>
-                        </div>
-                        :
-                        null
-                }
-                <motion.div
-                    className="page-wrapper"
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    exit={{ y: "100%" }}
-                    transition={{ type: "spring", duration: 0.8, }}
-                >
-                    <div className="lynx-wrapper">
-                        <div className="gradient-bg">
-                            <MusicBumperLynx audioSource={audioLink} setContextFunc={this.setContext} passBackFunc={this.passBarsBack} />
-                        </div>
-
-                        <div className="space-triangle">
-
-                        </div>
-
-                        <div className="gradient-ball">
-                            {/* <MusicBumperLynx audioSource={audioLink} isLinked={true} passthru={true} bars={this.state.barsBack} /> */}
-                        </div>
-
-                        <div className="vertical-colors">
-                            <div className="bar1"></div>
-                            <div className="bar2"></div>
-                            <div className="bar3"></div>
-                            <div className="bar4"></div>
-                            <div className="bar5"></div>
-                        </div>
+                <div className="lynx-wrapper">
+                    <div className="gradient-bg">
+                        <MusicBumperLynx audioSource={audioLink} setContextFunc={setContext} />
                     </div>
 
-                    <div className="controls-wrapper">
-                        <button onClick={this.pausePlay} className="play-button">
-                            {(
-                                this.state.isPlaying ?
-                                    <FaPause />
-                                    :
-                                    <FaPlay />
-                            )}
-                        </button>
+                    <div className="space-triangle">
 
-                        <button onClick={this.replay} className="play-button">
-                            <MdReplayCircleFilled />
-                        </button>
-                        <input type="range" min={0} max={100} defaultValue={100} onChange={this.setVolume}>
-                        </input>
                     </div>
-                </motion.div>
 
+                    <div className="gradient-ball">
+                        {/* <MusicBumperLynx audioSource={audioLink} isLinked={true} passthru={true} bars={state.barsBack} /> */}
+                    </div>
+
+                    <div className="vertical-colors">
+                        <div className="bar1"></div>
+                        <div className="bar2"></div>
+                        <div className="bar3"></div>
+                        <div className="bar4"></div>
+                        <div className="bar5"></div>
+                    </div>
+                </div>
                 <motion.div
                     className="info-about-album-wrap"
-                    initial={{ x: "100%" }}
+                    initial={{ x: "300%" }}
                     animate={{ x: 0 }}
                     exit={{ x: "100%" }}
                     transition={{ type: "spring", duration: 1, }}
                 >
                     <div className="info-about-album">
-                        <p>Artist: <span className="color-gold-glow">{this.props.artist}</span></p>
-                        <p>Album Title: <span className="color-gold-glow">{this.props.albumTitle}</span></p>
-                        <p>Release year: <span className="color-gold-glow">{this.props.released}</span></p>
+                        <p>Artist: <span className="color-gold-glow">{props.artist}</span></p>
+                        <p>Album Title: <span className="color-gold-glow">{props.albumTitle}</span></p>
+                        <p>Release year: <span className="color-gold-glow">{props.released}</span></p>
                     </div>
                 </motion.div>
             </motion.div>
-        )
-    }
+        </motion.div>
+    )
 }
 
 export default Lynx

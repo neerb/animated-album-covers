@@ -93,9 +93,6 @@ function Bar({ amplitude, aniDelay, aniDur }) {
     return <div className="bar" style={{ height: amplitude + '%', animationDelay: aniDelay + "ms", animationDuration: aniDur + "ms" }}></div>
 }
 
-function InvertedBar({ amplitude }) {
-    return <div className="inverted-bar" style={{ height: ((amplitude <= 0) ? (100 - amplitude) : (100 - amplitude - 7)) + '%' }} ></ div >
-}
 function MusicBumper(props) {
     return (
         <div className="bumper-wrap">

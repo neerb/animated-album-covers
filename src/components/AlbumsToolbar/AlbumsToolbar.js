@@ -16,20 +16,18 @@ function ListItem(props) {
 
 
 function AlbumsToolbar(props) {
-    const [activeSelection, setActiveSelection] = useState("sonusauri");
     const location = useLocation();
     const { pathname } = location;
 
     useEffect(() => {
+        props.passPause();
+
         $("*").removeClass("album-selected");
         if (pathname.length > 1) {
             $('#' + pathname.substring(1, pathname.length)).addClass("album-selected");
         }
-    }, [activeSelection]);
+    }, [location]);
 
-    const select = (a) => {
-        setActiveSelection(a.routePath);
-    }
 
     return (
         <div className='toolbar-wrapper'>
@@ -37,7 +35,7 @@ function AlbumsToolbar(props) {
                 <ul>
                     {
                         props.albums.map(a => {
-                            return <ListItem activeSelection={activeSelection === a.albumTitle ? 'active' : ''} key={a.albumTitle} passId={a.routePath} routePath={a.routePath} onClick={() => { select(a) }} albumTitle={a.albumTitle} artist={a.artist} />
+                            return <ListItem key={a.albumTitle} passId={a.routePath} routePath={a.routePath} albumTitle={a.albumTitle} artist={a.artist} />
                         })
                     }
                 </ul>
