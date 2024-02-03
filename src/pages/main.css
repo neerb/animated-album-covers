@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Dancing+Script:wght@400;700&family=DotGothic16&family=Major+Mono+Display&family=Xanh+Mono:ital@0;1&family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Share+Tech+Mono&display=swap');
+:root {
+    --backgroundbiege: #D1BE9C; 
+    --backgroundbrown: #33210c;
+    --backgroundblack: #1F1D20;
+    --backgroundblacklighter: #2e2d2d;
+    --color1: #8e4b4b;
+    --color2: #918348;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    /* background: var(--backgroundbiege); */
+    /* background: repeating-linear-gradient(
+        45deg,
+        var(--backgroundbiege),
+        var(--backgroundbiege) 50px,
+        var(--backgroundbrown) 50px,
+        var(--backgroundbrown) 100px
+      ); */
+    /* background:linear-gradient(135deg, rgb(156, 114, 37), rgb(46, 46, 46)); */
+    
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    -webkit-transition: background-image 2s ease-in-out;
+    transition: background-image 2s ease-in-out;
+}
+
+.main-album-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.cover-filter {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: linear-gradient(rgba(18,16,16,0) 50%,rgba(0, 0, 0, 0.137) 0),linear-gradient(90deg,rgba(255,0,0,.06),rgba(0,255,0,.02),rgba(0,0,255,.06));
+    background-size: 100% 2px,3px 100%;
+
+    pointer-events: none;
+}
+
+.home {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(#ccbfaa, #000);
+    background-size: 200%;
+    background-position: 0 0%;
+    animation: homebg 1s ease-in-out alternate infinite;
+}
+
+@keyframes homebg {
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+

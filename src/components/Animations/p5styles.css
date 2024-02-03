@@ -1,0 +1,12 @@
+.p5-wrap {
+    margin: 0 auto;
+    display: flex;
+    filter: invert(1) sepia(0.9);
+    transition: transform 1s ease;
+    -webkit-transition : -webkit-filter 500ms linear;
+    box-sizing: border-box;
+}
+
+.p5-wrap:hover {
+    filter: invert(1);
+}
