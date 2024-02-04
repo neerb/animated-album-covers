@@ -200,3 +200,9 @@
     100% {
     }
 }
+
+@media screen and (max-width: 1075px) {
+    .lynx-wrapper {
+        margin: 0 auto;
+    }
+}

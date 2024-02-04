@@ -186,11 +186,15 @@ input[type="range"] {
 }
 
 @media screen and (max-width: 1075px) {
-    .full-wrapper {
+    /* .full-wrapper {
         flex-wrap: wrap-reverse;
         padding-top: 0;
-    }
+    } */
 
+    .page-wrapper {
+        flex-direction: column;
+    }
+    
     .info-about-album {
         flex-direction: row;
         justify-content: space-evenly;

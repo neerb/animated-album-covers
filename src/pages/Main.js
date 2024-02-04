@@ -93,7 +93,7 @@ function MainPage(props) {
   const pause = () => {
     let audioSource = document.getElementById("drbumper");
 
-    if (audioSource) {
+    if (audioSource && audioContext) {
       audioContext.suspend();
       audioSource.pause();
     }

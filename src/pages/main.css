@@ -15,16 +15,6 @@
 }
 
 .main {
-    /* background: var(--backgroundbiege); */
-    /* background: repeating-linear-gradient(
-        45deg,
-        var(--backgroundbiege),
-        var(--backgroundbiege) 50px,
-        var(--backgroundbrown) 50px,
-        var(--backgroundbrown) 100px
-      ); */
-    /* background:linear-gradient(135deg, rgb(156, 114, 37), rgb(46, 46, 46)); */
-    
     height: 100%;
     width: 100%;
     display: flex;

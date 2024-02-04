@@ -27,6 +27,8 @@ const Solo = (props) => {
     };
 
     const paginate = (newDirection) => {
+
+
         if (newDirection >= 1) {
             navigate("/sonusauri");
         } else {
@@ -112,7 +114,7 @@ const Solo = (props) => {
                 </div>
                 <motion.div
                     className="info-about-album-wrap"
-                    initial={{ x: "100%" }}
+                    initial={{ x: "300%" }}
                     animate={{ x: 0 }}
                     exit={{ x: "100%" }}
                     transition={{ type: "spring", duration: 1, }}

@@ -152,7 +152,7 @@ const Lynx = (props) => {
                 </div>
                 <motion.div
                     className="info-about-album-wrap"
-                    initial={{ x: "300%" }}
+                    initial={{ x: "100%" }}
                     animate={{ x: 0 }}
                     exit={{ x: "100%" }}
                     transition={{ type: "spring", duration: 1, }}

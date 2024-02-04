@@ -434,3 +434,9 @@
     transition: 0.5s ease-in-out;
     filter: sepia(0);
 }
+
+@media screen and (max-width: 1075px) {
+    .sonus-wrapper {
+        margin: 0 auto;
+    }
+}
