@@ -6,16 +6,16 @@ function AnimatedRoutes(props) {
     return (
         <AnimatePresence>
             <Routes>
-                <Route path="/" element={
+                <Route path="" element={
                     <div className='home'>
 
                     </div>} />
                 {
                     props.albums.map(a => {
-                        return <Route path={"/" + a.routePath} element={a.component} key={a.routePath} />
+                        return <Route path={"" + a.routePath} element={a.component} key={a.routePath} />
                     })
                 }
-                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="*" element={<Navigate to="" />} />
             </Routes>
         </AnimatePresence>
     )
