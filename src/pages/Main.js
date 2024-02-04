@@ -140,7 +140,7 @@ function MainPage(props) {
   // }, []);
 
   return (
-    <Router>
+    <Router basename="/animated-album-covers">
       <div className="main">
         {
           covers
