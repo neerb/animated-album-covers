@@ -150,19 +150,20 @@ const Lynx = (props) => {
                         <div className="bar5"></div>
                     </div>
                 </div>
-                <motion.div
-                    className="info-about-album-wrap"
-                    initial={{ x: "100%" }}
-                    animate={{ x: 0 }}
-                    exit={{ x: "100%" }}
-                    transition={{ type: "spring", duration: 1, }}
-                >
-                    <div className="info-about-album">
-                        <p>Artist: <span className="color-gold-glow">{props.artist}</span></p>
-                        <p>Album Title: <span className="color-gold-glow">{props.albumTitle}</span></p>
-                        <p>Release year: <span className="color-gold-glow">{props.released}</span></p>
-                    </div>
-                </motion.div>
+            </motion.div>
+            <motion.div
+                className="info-about-album-wrap"
+                initial={{ y: "300%" }}
+                animate={{ y: 0 }}
+                transition={{ type: "spring", duration: 1, }}
+            >
+                <div className="info-about-album">
+                    <p>Artist: <span className="color-gold-glow">{props.artist}</span></p>
+                    <hr></hr>
+                    <p>Album Title: <span className="color-gold-glow">{props.albumTitle}</span></p>
+                    <hr></hr>
+                    <p>Release year: <span className="color-gold-glow">{props.released}</span></p>
+                </div>
             </motion.div>
         </motion.div>
     )

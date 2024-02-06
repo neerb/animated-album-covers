@@ -7,7 +7,7 @@ import Lynx from "../components/AlbumCovers/Lynx";
 import Solo from "../components/AlbumCovers/Solo";
 import ZeroWave from "../components/AlbumCovers/ZeroWave";
 import OutOfTouch from "../components/AlbumCovers/OutOfTouch";
-import { animate, motion } from 'framer-motion';
+
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -82,7 +82,6 @@ function MainPage(props) {
   }, []);
 
   const selectAlbum = (album) => {
-    // console.log(album);
     setSelectedAlbum(album);
   }
 
@@ -145,7 +144,7 @@ function MainPage(props) {
         {
           covers
             ?
-            <AlbumsToolbar selectAlbumFunction={selectAlbum} albums={covers} passPause={pause} />
+            <AlbumsToolbar selectAlbumFunc={selectAlbum} albums={covers} passPause={pause} />
             :
             null
         }
@@ -153,33 +152,46 @@ function MainPage(props) {
         {/* <div className="main-album-wrap" style={{ backgroundImage: selectedAlbum.background }}> */}
         <AnimatedRoutes albums={covers} />
 
+
         {
           !isPlaying ?
             <div className="press-play">
               <p>
-                - press play below -
+                {
+                  selectedAlbum
+                    ?
+                    "- press play below -"
+                    :
+                    "- select an album above- "
+                }
               </p>
             </div>
             :
             null
         }
 
-        <div className="controls-wrapper">
-          <button onClick={pausePlay} className="play-button">
-            {(
-              isPlaying ?
-                <FaPause />
-                :
-                <FaPlay />
-            )}
-          </button>
+        {
+          selectedAlbum ?
+            <div className="controls-wrapper">
+              <button onClick={pausePlay} className="play-button">
+                {(
+                  isPlaying ?
+                    <FaPause />
+                    :
+                    <FaPlay />
+                )}
+              </button>
 
-          <button onClick={replay} className="play-button">
-            <MdReplayCircleFilled />
-          </button>
-          <input type="range" min={0} max={100} defaultValue={100} onChange={setVolume}>
-          </input>
-        </div>
+              <button onClick={replay} className="play-button">
+                <MdReplayCircleFilled />
+              </button>
+
+              <input type="range" min={0} max={100} defaultValue={100} onChange={setVolume}>
+              </input>
+            </div>
+            :
+            null
+        }
         {/* </div> */}
 
         {/* <div className="cover-filter" />

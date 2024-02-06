@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 function ListItem(props) {
     return (
         <Link to={props.routePath} style={{ textDecoration: "none" }}>
-            <li className={props.activeSelection} onClick={props.onClick} id={props.passId}>
+            <li className={props.activeSelection} id={props.passId}>
                 <span className='color-albumtitle'>{props.albumTitle}</span>
                 <span> ({props.artist})</span>
             </li >
@@ -20,11 +20,14 @@ function AlbumsToolbar(props) {
     const { pathname } = location;
 
     useEffect(() => {
+        let pathSubstr = pathname.substring(1, pathname.length);
+
         props.passPause();
+        props.selectAlbumFunc(pathSubstr)
 
         $("*").removeClass("album-selected");
         if (pathname.length > 1) {
-            $('#' + pathname.substring(1, pathname.length)).addClass("album-selected");
+            $('#' + pathSubstr).addClass("album-selected");
         }
     }, [location]);
 

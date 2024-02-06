@@ -1,6 +1,8 @@
 .sonus-wrapper {
-    width: 85vh;
-    height: 85vh;
+    /* width: 85vh;
+    height: 85vh; */
+    aspect-ratio: 1/1;
+    max-width: 100%;
     margin: 0px;
     /* margin: auto auto; */
 
@@ -27,6 +29,16 @@
     background-size: 1.6em 1.6em;
     background-attachment: fixed; */
 }
+
+@media screen and (orientation: portrait) {
+    .sonus-wrapper {
+        /* max-width: 100%; */
+        margin: auto 0;
+        width: 90%;
+        height:min-content; 
+    }
+  }
+
 .compilation-text {
     font-family: 'Dancing Script', cursive;
     /* position: absolute; */
@@ -437,6 +449,5 @@
 
 @media screen and (max-width: 1075px) {
     .sonus-wrapper {
-        margin: 0 auto;
     }
 }
