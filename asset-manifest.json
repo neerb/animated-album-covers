@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/animated-album-covers/static/css/main.c272f3e1.css",
-    "main.js": "/animated-album-covers/static/js/main.f3813bbf.js",
+    "main.css": "/animated-album-covers/static/css/main.0b43b46b.css",
+    "main.js": "/animated-album-covers/static/js/main.db0b11b5.js",
     "static/js/592.fa1cff33.chunk.js": "/animated-album-covers/static/js/592.fa1cff33.chunk.js",
     "static/media/theeye3.png": "/animated-album-covers/static/media/theeye3.af0c389f6c35c7b6a09c.png",
     "static/media/theeye.png": "/animated-album-covers/static/media/theeye.4dc109017b892c39febd.png",
@@ -12,12 +12,12 @@
     "static/media/clouds.png": "/animated-album-covers/static/media/clouds.05e4b31f7903aa0f82ac.png",
     "static/media/cherry.png": "/animated-album-covers/static/media/cherry.8bb190a4c5f68b53ee69.png",
     "index.html": "/animated-album-covers/index.html",
-    "main.c272f3e1.css.map": "/animated-album-covers/static/css/main.c272f3e1.css.map",
-    "main.f3813bbf.js.map": "/animated-album-covers/static/js/main.f3813bbf.js.map",
+    "main.0b43b46b.css.map": "/animated-album-covers/static/css/main.0b43b46b.css.map",
+    "main.db0b11b5.js.map": "/animated-album-covers/static/js/main.db0b11b5.js.map",
     "592.fa1cff33.chunk.js.map": "/animated-album-covers/static/js/592.fa1cff33.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c272f3e1.css",
-    "static/js/main.f3813bbf.js"
+    "static/css/main.0b43b46b.css",
+    "static/js/main.db0b11b5.js"
   ]
 }
