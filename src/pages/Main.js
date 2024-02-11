@@ -7,7 +7,7 @@ import Lynx from "../components/AlbumCovers/Lynx";
 import Solo from "../components/AlbumCovers/Solo";
 import ZeroWave from "../components/AlbumCovers/ZeroWave";
 import OutOfTouch from "../components/AlbumCovers/OutOfTouch";
-
+import Seraphim from "../components/AlbumCovers/Seraphim";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -63,6 +63,14 @@ function MainPage(props) {
         background: "linear-gradient(135deg, #5f69b8, rgb(44, 49, 87))",
         released: "2018",
         routePath: "solo",
+      },
+      {
+        albumTitle: "Seraphim",
+        artist: "Ambulate",
+        component: <Seraphim albumTitle={"Seraphim"} artist={"Ambulate"} released={"XXXX"} setContextFunc={setContext} />,
+        background: "linear-gradient(135deg, #5f69b8, rgb(44, 49, 87))",
+        released: "XXXX",
+        routePath: "seraphim",
       },
       // {
       //   albumTitle: "Zero Wave",
@@ -154,7 +162,7 @@ function MainPage(props) {
 
 
         {
-          !isPlaying ?
+          !isPlaying && selectedAlbum !== "seraphim" ?
             <div className="press-play">
               <p>
                 {
@@ -171,7 +179,7 @@ function MainPage(props) {
         }
 
         {
-          selectedAlbum ?
+          selectedAlbum && selectedAlbum !== "seraphim" ?
             <div className="controls-wrapper">
               <button onClick={pausePlay} className="play-button">
                 {(

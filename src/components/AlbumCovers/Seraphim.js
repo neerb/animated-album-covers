@@ -1,22 +1,29 @@
-import * as React from "react"
-import "./solo.css"
+import React, { useState, useEffect, useRef } from 'react';
 import "./common.css"
-import MusicBumperSolo from "../MusicBumper/MusicBumperSolo";
-import { FaPlay } from "react-icons/fa";
-import { FaPause } from "react-icons/fa";
-import { MdReplayCircleFilled } from "react-icons/md";
 import { animate, motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
+import MusicBumper from './Seraphim/SeraphimBumper';
 
+// Actual Lynx Song
+const audioLink = 'https://audio.jukehost.co.uk/nyd2sERYdUrTl9KJnuoPS3gz2Idfqyo4';
 
-// const audioLink = 'https://audio.jukehost.co.uk/SVfuKTIQfieaWcE8tkWJ9fV2A59N0xrf';
-const audioLink = 'https://audio.jukehost.co.uk/4EwUyGZZgDpi5VpoamnNsP7UcjuahCp6';
-// const audioLink = 'https://audio.jukehost.co.uk/TSwcmY1V3H6wLYCOzNHrgIfGMXkTXk5m';
-const background = "linear-gradient(135deg, #444b83, rgb(44, 49, 87))";
+const styles = {
+    background: "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(99,0,0,1) 17%, rgba(105,0,0,1) 35%, rgba(255,240,152,1) 50%, rgba(105,0,0,1) 65%, rgba(99,0,0,1) 83%, rgba(0,0,0,1) 100%)",
+    // backgroundImage: "linear-gradient(var(--bggc) .1em, transparent .1em), linear-gradient(90deg, var(--bggc) .1em, transparent .1em)",
+    // backgroundSize: "1.6em 1.6em",
+    // backgroundAttachment: "fixed",
+};
+
 const swipeConfidenceThreshold = 10000;
 
-const Solo = (props) => {
+
+const Lynx = (props) => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+    }, []);
+
 
     const setContext = (c) => {
         props.setContextFunc(c);
@@ -27,19 +34,17 @@ const Solo = (props) => {
     };
 
     const paginate = (newDirection) => {
-
-
         if (newDirection >= 1) {
-            navigate("/seraphim");
+            navigate("/sonusauri");
         } else {
-            navigate("/lynx");
+            navigate("/solo");
         }
     };
 
     return (
         <motion.div
             className="full-wrapper"
-            style={{ backgroundImage: background }}
+            style={styles}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -64,53 +69,8 @@ const Solo = (props) => {
                     }
                 }}
             >
-                <div className="solo-wrapper">
-                    <div className="emil-wrap">
-                        <h1 className="emil-r">Emil</h1>
-                        <h1 className="emil-r2">Rottmayer</h1>
-                    </div>
-
-                    <div className="solo-gradient-circle">
-
-                    </div>
-
-                    <div className="solo-triag-wrap">
-                        <div className="solo-gradient-triangle">
-
-                        </div>
-
-                        <h1 className="descend-title">DESCEND</h1>
-                    </div>
-
-                    <div className="solo-gradient-box">
-
-                    </div>
-
-                    <div className="solo-color-bars-wrapper">
-                        <div className="solo-color-bar">
-
-                        </div>
-
-                        <div className="solo-color-bar">
-
-                        </div>
-
-                        <div className="solo-color-bar">
-
-                        </div>
-
-                        <div className="solo-color-bar">
-
-                        </div>
-
-                        <div className="solo-color-bar">
-
-                        </div>
-                    </div>
-
-                    <div className="solo-bumper-wrap">
-                        <MusicBumperSolo audioSource={audioLink} setContextFunc={setContext} />
-                    </div>
+                <div className="seraphim-wrapper">
+                    <MusicBumper />
                 </div>
             </motion.div>
             <motion.div
@@ -131,4 +91,4 @@ const Solo = (props) => {
     )
 }
 
-export default Solo
+export default Lynx

@@ -45,7 +45,7 @@
     position: relative;
     /* right: 0; */
     translate: 190% 20px;
-    font-size: 3rem;
+    font-size: clamp(2rem, 3rem, 3.5rem);
     color: var(--color2);
     font-weight: 700;
     letter-spacing: 2px;
@@ -89,7 +89,8 @@
 .title-text {
     /* font-family: 'Xanh Mono', monospace; */
     font-family: 'Major Mono Display', monospace;
-    font-size: 5rem;
+    font-size: clamp(3-+
+    rem, 4rem, 5.5rem);
     /* font-size: clamp(5rem, 10rem, 2rem);  */
     color: var(--color1);
     text-align: center;
@@ -353,7 +354,7 @@
     height: 15%;
     text-align: left;
     font-family: 'Young Serif', serif;
-    font-size: 1em;
+    font-size: clamp(0.5rem, 1.25rem, 1.5rem);
     color: var(--color2);
     line-height: 1.3rem;
     letter-spacing: 0.5px;
@@ -446,6 +447,12 @@
     transition: 0.5s ease-in-out;
     filter: sepia(0);
 }
+
+@media screen and (max-width: 500px) {
+    .title-text {
+
+    }
+  }
 
 @media screen and (max-width: 1075px) {
     .sonus-wrapper {

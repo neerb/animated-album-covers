@@ -79,7 +79,7 @@ const SonusAuri = (props) => {
         if (newDirection >= 1) {
             navigate("/lynx");
         } else {
-            navigate("/solo");
+            navigate("/seraphim");
         }
     };
 
